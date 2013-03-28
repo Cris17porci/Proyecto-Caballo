@@ -84,8 +84,6 @@ void mover(char tablero[7][7], int x , int y)
      {  
      if(x+2<8 && y+1<8 && tablero[x+2][y+1]!=(char)260 && x+2>=0 && y+1>=0)
      {
-              cout<<x<<endl;
-              cout<<y<<endl;
             x=x+2;
             y++;
             tablero[x][y]=(char)1;
@@ -103,8 +101,7 @@ void mover(char tablero[7][7], int x , int y)
              
            if(x+2<8 && y-1<8 && tablero[x+2][y-1]!=(char)260 && x+2>=0 && y-1>=0 )
            {
-                    cout<<x<<endl;
-                    cout<<y<<endl;
+                    
                   x=x+2;
                   y--;
                   tablero[x][y]=(char)1;
@@ -122,8 +119,7 @@ void mover(char tablero[7][7], int x , int y)
           
      if(x-2<8 && y+1<8 && tablero[x-2][1+y]!=(char)260 && x-2>=0 && y+1>=0 )
      {
-              cout<<x<<endl;
-              cout<<y<<endl;
+              
             x=x-2;
             y++;
             tablero[x][y]=(char)1;
@@ -141,8 +137,7 @@ void mover(char tablero[7][7], int x , int y)
           
      if(x-2<8 && y-1<8 && tablero[x-2][y-1]!=(char)260 && x-2>=0 && y-1>=0 )
      {
-              cout<<x<<endl;
-              cout<<y<<endl;
+              
             x=x-2;
             y--;
             tablero[x][y]=(char)1;
@@ -160,8 +155,7 @@ void mover(char tablero[7][7], int x , int y)
         
      if(x+1<8 && y+2<8 && tablero[x+1][y+2]!=(char)260 && x+1>=0 && y+2>=0 )
      {
-              cout<<x<<endl;
-              cout<<y<<endl;
+              
             y=y+2;
         x++;
             tablero[x][y]=(char)1;
@@ -179,8 +173,7 @@ void mover(char tablero[7][7], int x , int y)
              
            if(x-1<8 && y+2<8 && tablero[x-1][y+2]!=(char)260 && x-1>=0 && y+2>=0 )
            {
-                    cout<<x<<endl;
-              cout<<y<<endl;
+                    
                   y=y+2;
            x--;
                   tablero[x][y]=(char)1;
@@ -198,8 +191,7 @@ void mover(char tablero[7][7], int x , int y)
           
      if(x+1<8 && y-2<8 && tablero[x+1][y-2]!=(char)260 && x+1>=0 && y-2>=0)
      {
-              cout<<x<<endl;
-              cout<<y<<endl;
+              
             y=y-2;
      x++;
             tablero[x][y]=(char)1;
@@ -217,8 +209,7 @@ void mover(char tablero[7][7], int x , int y)
           
      if(x-1<8 && y-2<8 && tablero[x-1][y-2]!=(char)260 && x-1>=0 && y-2>=0)
      {
-              cout<<x<<endl;
-              cout<<y<<endl;
+              
             y=y-2;
             x--;
             tablero[x][y]=(char)1;
