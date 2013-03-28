@@ -51,7 +51,7 @@ void ver(char tablero[7][7])
             
         }
     }
-    cout<<endl<<endl<<"Total de casillas: "<<cuenta <<endl;
+    
 }
 
 int verificador( char tablero[7][7])
@@ -221,10 +221,10 @@ void mover(char tablero[7][7], int x , int y)
             
             }
           }
-          cout<<e<<endl;
+          
           }
           
-          cout<<e<<endl;
+          
           fs.close();
           ver(tablero);
           system("pause");
@@ -239,7 +239,7 @@ int main()
     
     char tablero[7][7];
     int x,y,cuenta=0,inicial=0,z=0,b=0,fin=1;
-    int e=0;
+    
     
 
  while(inicial==0)
@@ -263,14 +263,17 @@ int main()
        {
        cout<<endl;
        cout<<"La posicion iniciada no existe dentro de un tablero de ajedres"<<endl;
-       cout<<"Recordar que debe ingresar pos entre [0][0] a [7][7]"<<endl; 
+       cout<<"Recordar que debe ingresar pos entre [0][0] a [7][7]"<<endl;
+       cout<< "Recuerde que los peones estan en la posicion: "<<endl;
+       cout<< "[2][3], [2][5], [5][2], [5][5]"<<endl;
+        
        system("pause");
        system("cls");
        }     
        
 }
 ver(tablero);
-
+system("pause");
 
 mover(tablero,x,y);
 ver (tablero);
