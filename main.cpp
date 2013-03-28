@@ -35,6 +35,7 @@ int pos_real(int x, int y)
 void ver(char tablero[7][7])
 {
    int i,j,cuenta=0;
+   
    cout<<endl<<endl;
 
     for(i=0;i<8;i++)
@@ -45,18 +46,209 @@ void ver(char tablero[7][7])
             cout<<" | "<<tablero[i][j];
             else
             cout<<" | "<<tablero[i][j]<<" | "<<endl;
-             // aqui imprime el tablero de ajedres
+             // aqui imprime el tablero de ajedrez
             cuenta++;
+            
         }
     }
     cout<<endl<<endl<<"Total de casillas: "<<cuenta <<endl;
 }
 
+int verificador( char tablero[7][7])
+{
+    char x =(char)48;
+    for(int i=0;i<8;i++)
+    {
+            for(int j=0; j<8;j++)
+            {
+                    if(tablero[i][j]== x)
+                    {
+                               return 0;
+                                               }
+                    
+                    }
+            }
+            return 1;
+    }
+
+void mover(char tablero[7][7], int x , int y)
+{
+     srand((unsigned)time(0));
+     int e=0;
+     ofstream fs("mov.txt");
+     while(e!=1)
+     {
+  int op= (1 + rand() % 8);
+       
+     if(op==1)
+     {  
+     if(x+2<8 && y+1<8 && tablero[x+2][y+1]!=(char)260 && x+2>=0 && y+1>=0)
+     {
+              cout<<x<<endl;
+              cout<<y<<endl;
+            x=x+2;
+            y++;
+            tablero[x][y]=(char)1;
+            cout<<"Se a producido un movimiento";
+            fs<<"Posicion: ["<<x<<","<<y<<"]"<<endl;
+            
+            ver(tablero);
+            e=verificador(tablero);
+           
+            }
+     }
+     if(op==2)
+     {       
+             
+             
+           if(x+2<8 && y-1<8 && tablero[x+2][y-1]!=(char)260 && x+2>=0 && y-1>=0 )
+           {
+                    cout<<x<<endl;
+                    cout<<y<<endl;
+                  x=x+2;
+                  y--;
+                  tablero[x][y]=(char)1;
+                  cout<<"Se a producido un movimiento";
+                  fs<<"Posicion: ["<<x<<","<<y<<"]"<<endl;
+                  ver(tablero);
+                  e=verificador(tablero);
+                  
+            
+            }
+            }
+     if(op==3)
+     {
+              
+          
+     if(x-2<8 && y+1<8 && tablero[x-2][1+y]!=(char)260 && x-2>=0 && y+1>=0 )
+     {
+              cout<<x<<endl;
+              cout<<y<<endl;
+            x=x-2;
+            y++;
+            tablero[x][y]=(char)1;
+            cout<<"Se a producido un movimiento";
+            fs<<"Posicion: ["<<x<<","<<y<<"]"<<endl;
+            ver(tablero);
+            e=verificador(tablero);
+           
+            
+            }
+            }
+     if(op==4)
+     {
+              
+          
+     if(x-2<8 && y-1<8 && tablero[x-2][y-1]!=(char)260 && x-2>=0 && y-1>=0 )
+     {
+              cout<<x<<endl;
+              cout<<y<<endl;
+            x=x-2;
+            y--;
+            tablero[x][y]=(char)1;
+            cout<<"Se a producido un movimiento";
+            fs<<"Posicion: ["<<x<<","<<y<<"]"<<endl;
+            ver(tablero);
+            e=verificador(tablero);
+            
+            
+            }
+            }
+     if(op==5)
+     {
+              
+        
+     if(x+1<8 && y+2<8 && tablero[x+1][y+2]!=(char)260 && x+1>=0 && y+2>=0 )
+     {
+              cout<<x<<endl;
+              cout<<y<<endl;
+            y=y+2;
+        x++;
+            tablero[x][y]=(char)1;
+            cout<<"Se a producido un movimiento";
+            fs<<"Posicion: ["<<x<<","<<y<<"]"<<endl;
+            
+            ver(tablero);
+            e=verificador(tablero);
+            
+            }
+            }
+     if(op==6)
+     {       
+             
+             
+           if(x-1<8 && y+2<8 && tablero[x-1][y+2]!=(char)260 && x-1>=0 && y+2>=0 )
+           {
+                    cout<<x<<endl;
+              cout<<y<<endl;
+                  y=y+2;
+           x--;
+                  tablero[x][y]=(char)1;
+                  cout<<"Se a producido un movimiento";
+                  fs<<"Posicion: ["<<x<<","<<y<<"]"<<endl;
+                  ver(tablero);
+                  e=verificador(tablero);
+                  
+            
+            }
+            }
+     if(op==7)
+     {
+              
+          
+     if(x+1<8 && y-2<8 && tablero[x+1][y-2]!=(char)260 && x+1>=0 && y-2>=0)
+     {
+              cout<<x<<endl;
+              cout<<y<<endl;
+            y=y-2;
+     x++;
+            tablero[x][y]=(char)1;
+            cout<<"Se a producido un movimiento";
+            fs<<"Posicion: ["<<x<<","<<y<<"]"<<endl;
+            ver(tablero);
+            e=verificador(tablero);
+            
+            
+            }
+            }
+     if(op==8)
+     {
+              
+          
+     if(x-1<8 && y-2<8 && tablero[x-1][y-2]!=(char)260 && x-1>=0 && y-2>=0)
+     {
+              cout<<x<<endl;
+              cout<<y<<endl;
+            y=y-2;
+            x--;
+            tablero[x][y]=(char)1;
+            cout<<"Se a producido un movimiento";
+            fs<<"Posicion: ["<<x<<","<<y<<"]"<<endl;
+            ver(tablero);
+            e=verificador(tablero);
+            
+            
+            }
+          }
+          cout<<e<<endl;
+          }
+          
+          cout<<e<<endl;
+          fs.close();
+          ver(tablero);
+          system("pause");
+}
+
+     
+
+
+
 int main()
 {
-
+    
     char tablero[7][7];
-    int x,y,cuenta=0,inicial=0,z=0,b=0;
+    int x,y,cuenta=0,inicial=0,z=0,b=0,fin=1;
+    int e=0;
     
 
  while(inicial==0)
@@ -66,7 +258,7 @@ int main()
     cout<<"en la que desea colocar al caballo"<<endl<<endl<<endl;
     cout<<"Ingrese posicion x del caballo en donde desea posicionarlo: ";
     cin>>x;
-    cout<<"Ingrese posicion ydel caballo en donde desea posicionarlo: ";
+    cout<<"Ingrese posicion y del caballo en donde desea posicionarlo: ";
     cin>>y;
     cout<<endl;
     z=pos_real(x,y);
@@ -87,6 +279,11 @@ int main()
        
 }
 ver(tablero);
+
+
+mover(tablero,x,y);
+ver (tablero);
+
  
 
    system("pause");
