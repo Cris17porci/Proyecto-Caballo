@@ -1,7 +1,7 @@
 #include <iostream>
 #include <cstdlib>
-#include <ctime>
-#include <fstream> 
+#include <ctime> //libreria para la utilizacion del tiempo del ramdom
+#include <fstream> //libreria para generar el registro de movimientos en un txt
 
 using namespace std;
 
@@ -16,15 +16,15 @@ void inicializar(char tablero[7][7],int x,int y)
             tablero[i][j]=(char)48;
         }
     }
-    tablero [x][y]= (char)1; // Casillero en donde se encuentra el caballo representado con una carita
-    tablero [2][2]= (char)260; // Casillas donde se encuentran los peones representados por rombos
+    tablero [x][y]= (char)1; // Casillero en donde se encuentra el caballo representado con una carita feliz
+    tablero [2][2]= (char)260; // Casillas donde se encuentran los peones representados por simbolos de rombos
     tablero [2][5]= (char)260;
     tablero [5][2]= (char)260;
     tablero [5][5]=(char)260;
 }
 
 
-int pos_real(int x, int y)
+int pos_real(int x, int y)// funcion que comprueba que la posicion inicial no coincida con ningun peon
 {
    if(x==2 && y==2 || x==2 && y==5 || x==5 && y==2 || x==5 && y==5 || x<0 || y<0 || x>7 || y>7) // verificamos en que casillas no puede encontrarse el caballo
         return 0;
@@ -32,7 +32,7 @@ int pos_real(int x, int y)
         return 1;
 }
 
-void ver(char tablero[7][7])
+void ver(char tablero[7][7])// funcion para imprimir el tablero de ajedrez
 {
    int i,j,cuenta=0;
    
@@ -46,7 +46,7 @@ void ver(char tablero[7][7])
             cout<<" | "<<tablero[i][j];
             else
             cout<<" | "<<tablero[i][j]<<" | "<<endl;
-             // aqui imprime el tablero de ajedrez
+           
             cuenta++;
             
         }
@@ -75,9 +75,12 @@ void mover(char tablero[7][7], int x , int y)
 {
      srand((unsigned)time(0));
      int e=0;
-     ofstream fs("mov.txt");
+     ofstream fs("mov.txt");// los movimientos son registrados en un txt
+     
+     int t=2;//invento
      while(e!=1)
      {
+  
   int op= (1 + rand() % 8);
        
      if(op==1)
@@ -87,6 +90,7 @@ void mover(char tablero[7][7], int x , int y)
             x=x+2;
             y++;
             tablero[x][y]=(char)1;
+            
             cout<<"Se a producido un movimiento";
             fs<<"Posicion: ["<<x<<","<<y<<"]"<<endl;
             
@@ -105,6 +109,7 @@ void mover(char tablero[7][7], int x , int y)
                   x=x+2;
                   y--;
                   tablero[x][y]=(char)1;
+                
                   cout<<"Se a producido un movimiento";
                   fs<<"Posicion: ["<<x<<","<<y<<"]"<<endl;
                   ver(tablero);
@@ -123,6 +128,7 @@ void mover(char tablero[7][7], int x , int y)
             x=x-2;
             y++;
             tablero[x][y]=(char)1;
+           
             cout<<"Se a producido un movimiento";
             fs<<"Posicion: ["<<x<<","<<y<<"]"<<endl;
             ver(tablero);
@@ -141,6 +147,7 @@ void mover(char tablero[7][7], int x , int y)
             x=x-2;
             y--;
             tablero[x][y]=(char)1;
+            
             cout<<"Se a producido un movimiento";
             fs<<"Posicion: ["<<x<<","<<y<<"]"<<endl;
             ver(tablero);
@@ -159,6 +166,7 @@ void mover(char tablero[7][7], int x , int y)
             y=y+2;
         x++;
             tablero[x][y]=(char)1;
+            
             cout<<"Se a producido un movimiento";
             fs<<"Posicion: ["<<x<<","<<y<<"]"<<endl;
             
@@ -176,7 +184,8 @@ void mover(char tablero[7][7], int x , int y)
                     
                   y=y+2;
            x--;
-                  tablero[x][y]=(char)1;
+                 tablero[x][y]=(char)1;
+                  
                   cout<<"Se a producido un movimiento";
                   fs<<"Posicion: ["<<x<<","<<y<<"]"<<endl;
                   ver(tablero);
@@ -195,6 +204,7 @@ void mover(char tablero[7][7], int x , int y)
             y=y-2;
      x++;
             tablero[x][y]=(char)1;
+          
             cout<<"Se a producido un movimiento";
             fs<<"Posicion: ["<<x<<","<<y<<"]"<<endl;
             ver(tablero);
@@ -213,6 +223,7 @@ void mover(char tablero[7][7], int x , int y)
             y=y-2;
             x--;
             tablero[x][y]=(char)1;
+           
             cout<<"Se a producido un movimiento";
             fs<<"Posicion: ["<<x<<","<<y<<"]"<<endl;
             ver(tablero);
@@ -222,12 +233,15 @@ void mover(char tablero[7][7], int x , int y)
             }
           }
           
+         t++;//invento 
+          
           }
           
           
           fs.close();
           ver(tablero);
           system("pause");
+
 }
 
      
@@ -252,14 +266,15 @@ int main()
     cout<<"Ingrese posicion y del caballo en donde desea posicionarlo: ";
     cin>>y;
     cout<<endl;
-    z=pos_real(x,y);
-    if(z==1)
+    z=pos_real(x,y);//manda a verificar que la posicion inicial ingresada no corresponda a la de un peon
+    
+    if(z==1)//entra si la posicion esta libre
       {
        inicializar(tablero,x,y);
        inicial=1;
        
       }
-    else
+    else// si la posicion coincide con un peon, no se inicializa el tablero
        {
        cout<<endl;
        cout<<"La posicion iniciada no existe dentro de un tablero de ajedres"<<endl;
