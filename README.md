@@ -5,5 +5,8 @@ Tarea 01 de software
 
 Por:
 
-*Nicols Arratia Vera
+*Nicolas Arratia Vera
+
+
+
 *Cristobal Perez Gonzalez
