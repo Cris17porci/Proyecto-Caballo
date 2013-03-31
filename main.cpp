@@ -5,7 +5,7 @@
 
 using namespace std;
 
-void inicializar(char tablero[7][7],int x,int y)
+void inicializar(char tablero[8][8],int x,int y)
 {
     int i,j;
 
@@ -32,7 +32,7 @@ int pos_real(int x, int y)// funcion que comprueba que la posicion inicial no co
         return 1;
 }
 
-void ver(char tablero[7][7])// funcion para imprimir el tablero de ajedrez
+void ver(char tablero[8][8])// funcion para imprimir el tablero de ajedrez
 {
    int i,j,cuenta=0;
    
@@ -51,10 +51,10 @@ void ver(char tablero[7][7])// funcion para imprimir el tablero de ajedrez
             
         }
     }
-    
+   
 }
 
-int verificador( char tablero[7][7])
+int verificador( char tablero[8][8])
 {
     char x =(char)48;
     for(int i=0;i<8;i++)
@@ -71,7 +71,7 @@ int verificador( char tablero[7][7])
             return 1;
     }
 
-void mover(char tablero[7][7], int x , int y)
+void mover(char tablero[8][8], int x , int y)
 {
      srand((unsigned)time(0));
      int e=0;
@@ -240,7 +240,7 @@ void mover(char tablero[7][7], int x , int y)
           
           fs.close();
           ver(tablero);
-          system("pause");
+          
 
 }
 
@@ -251,7 +251,7 @@ void mover(char tablero[7][7], int x , int y)
 int main()
 {
     
-    char tablero[7][7];
+    char tablero[8][8];
     int x,y,cuenta=0,inicial=0,z=0,b=0,fin=1;
     
     
@@ -288,7 +288,7 @@ int main()
        
 }
 ver(tablero);
-system("pause");
+
 
 mover(tablero,x,y);
 ver (tablero);
@@ -297,3 +297,9 @@ ver (tablero);
 
    system("pause");
 }
+
+
+
+
+
+
